@@ -20,7 +20,17 @@ Resources:
               Federated: !Ref GithubOidc
             Condition:
               StringLike:
-                token.actions.githubusercontent.com:sub: !Sub repo:${FullRepoName}:*
+                token.actions.githubusercontent.com:sub: !Sub repo:${FullRepoName}:*:ref:refs/heads/main
+      Policies:
+        - PolicyName: DeployCloudformation
+          PolicyDocument:
+            Version: 2012-10-17
+            Statement:
+              - Effect: Allow
+                Action: "cloudformation:*"
+                Resource:
+                  - "*"
+
 
   GithubOidc:
     Type: AWS::IAM::OIDCProvider
