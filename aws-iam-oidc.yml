@@ -29,15 +29,14 @@ Resources:
                 Action: "cloudformation:*"
                 Resource:
                   - "*"
-        - PolicyName: STSPolicy
+        - PolicyName: AllowS3
           PolicyDocument:
             Version: 2012-10-17
             Statement:
               - Effect: Allow
-                Action: "sts:*"
+                Action: s3:CreateBucket
                 Resource:
                   - "*"
-
 
   GithubOidc:
     Type: AWS::IAM::OIDCProvider
