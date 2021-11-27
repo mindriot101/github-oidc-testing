@@ -19,7 +19,7 @@ Resources:
               Federated: !Ref GithubOidc
             Condition:
               StringLike:
-                token.actions.githubusercontent.com:sub: !Sub repo:${FullRepoName}:*:ref:refs/heads/main
+                token.actions.githubusercontent.com:sub: !Sub repo:${FullRepoName}:*
       Policies:
         - PolicyName: DeployCloudformation
           PolicyDocument:
